@@ -17,16 +17,16 @@ var logglyToken string = "YOUR_LOGGLY_TOKEN"
 
 func main() {
     log := logrus.New()
-    hook := logrusly.NewLogglyHook(logglyToken, "www.hostname.com", logrus.WarnLevel, "tag1", "tag2")
+    hook := logrusly.NewLogglyHook(logglyToken, "https://logs-01.loggly.com/bulk/", logrus.WarnLevel, "go", "logrus")
     log.Hooks.Add(hook)
 
     log.WithFields(logrus.Fields{
-        "name": "joe",
+        "name": "Slartibartfast",
         "age":  42,
-    }).Error("Hello world!")
+    }).Error("Hello Dent, Arthur Dent!")
 
     // Flush is automatic for panic/fatal
-    // Just make sure to Flush() before exiting or you may loose up to 5 seconds
+    // Just make sure to Flush() before exiting or you may lose up to 5 seconds
     // worth of messages.
     hook.Flush()
 }
